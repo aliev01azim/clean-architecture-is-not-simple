@@ -1,0 +1,33 @@
+name: data
+description: A Flutter package to contain data layer.
+version: 0.0.1
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.19.0-374.0.dev <3.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  domain:
+    path: ../domain/
+  injectable: ^1.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  injectable_generator: ^1.5.4
+  build_runner: ^2.2.1
+  flutter_lints: ^2.0.0
+  mockito: ^5.2.0
+
+flutter:
+  uses-material-design: true
