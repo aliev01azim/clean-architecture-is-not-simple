@@ -1,19 +1,17 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-import 'src/app/app.dart';
-import 'src/core/bloc/bloc_observer.dart';
-import 'src/di.dart';
+import 'src/app.dart';
+import 'src/repository/src/repo.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Bloc.observer = CubitObserver();
-  await configureDependencies();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
-  runApp(const App());
+  await Hive.initFlutter();
+  await Hive.openBox('userBox');
+  runApp(App(
+    connectivity: Connectivity(),
+    registerRepository: RegisterRepositoryImpl(),
+    loginRepository: LoginRepositoryImpl(),
+  ));
 }
